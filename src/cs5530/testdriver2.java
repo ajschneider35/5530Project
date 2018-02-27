@@ -25,7 +25,7 @@ public class testdriver2 {
 		 	 	// Sign up as user
 			// Exit
 		
-		System.out.println("pleasse enter your choice:");
+		System.out.println("please enter your choice:");
 	    	 
 	    	 /*** MENU 2 ***/
 	    	 System.out.println("        Welcome to UUber System     ");
@@ -53,7 +53,6 @@ public class testdriver2 {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		System.out.println("Example for cs5530");
 		Connector con=null;
 		String choice;
