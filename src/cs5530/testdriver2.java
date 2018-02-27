@@ -4,53 +4,98 @@ package cs5530;
 import java.lang.*;
 import java.sql.*;
 import java.io.*;
+import java.util.Scanner;
 
 public class testdriver2 {
 
 	/**
 	 * @param args
 	 */
-	public static void displayMenu(/*** int menuNum ***/)
+	public static void displayMenu()
 	{	
 		// Represent this with a switch case that takes in a number to decide which menu to show for the user
     	 	// Keep track of what type of user the user is
 		
 	    	/*** LIST OF THINGS TO INCLUDE IN OUR MENU ***/
 	    	 
+		Scanner input = new Scanner(System.in);
 	    	/*** MENU 1 ***/
 		System.out.println("        Welcome to UUber System     ");
-		    	// Login
-		    	// Sign Up
-		 	 	// Sign up as driver
-		 	 	// Sign up as user
-			// Exit
-		
-		System.out.println("please enter your choice:");
-	    	 
-	    	 /*** MENU 2 ***/
-	    	 System.out.println("        Welcome to UUber System     ");
-	    	 	//If the user is a driver show these options
-	    	 		// Add new car
-	    	 		// Update car details
-	    	 		// Browse cars
-	    	 		// Statistics
-	    	 		// Exit
-	    	 	// If the user is a rider show these options
-	    	 		// Reserve Car
-	    	 		// Log a ride
-	    	 		// Give feedback on car
-	    	 		// Get useful feedbacks
-	    	 		// Update trusted users
-	    	 		// Update favorite car to hire
-	    	 		// Browse cars
-	    	 		// Statistics
-	    	 		// Exit
-	    	 	// If user is admin user show these options
-		    		// Give awards
-	    	 		// Exit
-	    	 		
-	    	 System.out.println("please enter your choice:");
+		System.out.println("1) Login");
+		System.out.println("2) Sign Up");
+		System.out.println("3) Sign Up as Driver");
+		System.out.println("4) Quit");
+
+		int response = input.nextInt();
+		while (response != 1 || response != 2 || response != 3 || response != 4) {
+			if (response == 1 || response == 2 || response == 3)
+			{
+				displayMenu2(response);
+			}
+			else if (response == 4)
+			{
+				return;
+			}
+			else
+			{
+				System.out.println("Invalid Input");
+				System.out.println("Please Enter Response");
+			}
+		}
 	}
+	public static void displayMenu2(int response) {
+		//NEED TO ANALYZE THE LOGIN INFORMATION TO DECIDE WHO IS LOGGING IN
+		
+		Scanner input = new Scanner(System.in);
+		int newResponse = input.nextInt();
+		System.out.println("Welcome!");
+		System.out.println("Please enter your choice:");
+   	 	//If the user is a driver show these options
+		if(response == 3)
+		{
+   	 		// Add new car
+			System.out.println("1) Add new car");
+   	 		// Update car details
+			System.out.println("2) Car Details");
+   	 		// Browse cars
+			System.out.println("3) Browse Cars");
+   	 		// Statistics
+			System.out.println("4) Statistics");
+   	 		// Exit
+			System.out.println("5) Exit");
+		}
+
+   	 	// If the user is a rider show these options
+		else if (response == 1 || response == 2)
+		{
+   	 		// Reserve Car
+			System.out.println("1) Reserve Car");
+   	 		// Log a ride
+			System.out.println("2) Log a Ride");
+   	 		// Give feedback on car
+			System.out.println("3) Give Feedback on Ride");
+   	 		// Get useful feedbacks
+			System.out.println("4) Give Useful Feedbacks");
+   	 		// Update trusted users
+			System.out.println("5) Update Trusted Users");
+   	 		// Update favorite car to hire
+			System.out.println("6) Update Favorite Car");
+   	 		// Browse cars
+			System.out.println("7) Browse Cars");
+   	 		// Statistics
+			System.out.println("8) Statistics");
+   	 		// Exit
+			System.out.println("9) Exit");
+		}
+   	 	// If user is admin user show these options
+		else {
+   	 		// Give awards
+			System.out.println("1) Give awards");
+   	 		// Exit
+			System.out.println("2) Exit");
+		}
+	}
+
 	
 	public static void main(String[] args) {
 		System.out.println("Example for cs5530");
@@ -83,7 +128,7 @@ public class testdriver2 {
 			        	if (c==1)
 			        	{
 			        		 System.out.println("please enter a cname:");
-			    		 while ((cname = in.readLine()) == null && cname.length() == 0);
+			        		 while ((cname = in.readLine()) == null && cname.length() == 0);
 			    		 System.out.println("please enter a dname:");
 			    		 while ((dname = in.readLine()) == null && dname.length() == 0);
 			    		 Course course=new Course();
