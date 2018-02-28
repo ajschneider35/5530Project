@@ -1,3 +1,9 @@
+/**
+ * Class of static methods to perform operations that only a UDriver account would need to accomplish.
+ * 
+ * @author Andrew Schneider, u0881917
+ */
+
 package cs5530;
 
 import java.sql.ResultSet;
@@ -56,6 +62,7 @@ public class UDOperations {
 			while(rs.next()) {
 				
 				// TODO: Add rs strings to the output
+				// output+=rs.getString("cname")+"   "+rs.getString("dname")+"\n";
 			}
 			
 			rs.close();
@@ -130,6 +137,7 @@ public class UDOperations {
 			while(rs.next()) {
 				
 				// TODO: Add rs strings to the output
+				// output+=rs.getString("cname")+"   "+rs.getString("dname")+"\n";
 			}
 			
 			rs.close();
@@ -154,74 +162,5 @@ public class UDOperations {
 		}
 		
 		return output;
-	}
-	
-	/**
-	 *  Method to update the details of a car by request from a Driver User
-	 */
-	public static String browseCars(/* Takes in the user info needed for the query also*/Statement stmt) {
-		
-		// TODO: Build the sql query for the db
-		String sql="";
-		
-		// Output of the query to the db
-		String output="";
-		
-		// Let the console know what query is being executed
-		System.out.println("executing "+sql);
-		
-		// Result set for the query
-		ResultSet rs = null;
-		
-		// Execution of the query
-		try {
-			
-			rs = stmt.executeQuery(sql);
-			
-			while(rs.next()) {
-				
-				// TODO: Add rs strings to the output
-			}
-			
-			rs.close();
-		}
-		catch (Exception e) {
-			
-			System.out.println("ERROR: Cannot execute query for adding a new car.");
-		}
-		finally {
-			
-			try {
-				
-				if(rs != null || !rs.isClosed()) {
-					
-					rs.close();
-				}
-			}
-			catch (Exception e) {
-				
-				System.out.println("ERROR: Cannot close the result set.");
-			}
-		}
-		
-		return output;
-	}
-	
-	public static String howToBrowseCars(/* Takes in the user info needed for the query also*/Statement stmt) {
-		
-		// TODO: Complete the input for this method and build proper switch cases based on input
-		
-		// Ask how the user wants to browse through the cars
-		// If you would like to browse cars using the criteria, enter the information when prompted. Otherwise press return to enter nothing.
-		
-		// Enter City
-		// Enter State
-		// Enter Keyword included in type of car
-		
-		// Ask how they want the results sorted
-			// A: By average numerical scores of feedback ratings
-			// B: Average numerical score of trusted users' feedback ratings
-		
-		return browseCars(stmt);
 	}
 }
