@@ -14,44 +14,6 @@ public class GeneralOperations {
 	public GeneralOperations()
 	{}
 	
-	/*** EXAMPLE METHOD ***/
-	/*** CREATE METHODS USING THIS SKELETON FOR OPERATIONS THAT CAN BE PERFORMED BY BOTH USERS AND DRIVERS
-	 * * AS WELL AS ANY GENERAL OPERATIONS THAT ARE NEEDED TO BE COMPLETED ***/
-	
-	public String getCourse(String cname, String dname, Statement stmt) {
-		
-		String sql="select * from course where cname like '%"+cname+"%' and dname like '%"+dname+"%'";
-		String output="";
-		ResultSet rs=null;
-		 	System.out.println("executing "+sql);
-		 	try{
-   		 	rs=stmt.executeQuery(sql);
-   		 	while (rs.next())
-			 {
-				//System.out.print("cname:");
-			        output+=rs.getString("cname")+"   "+rs.getString("dname")+"\n"; 
-			 }
-		     
-		     rs.close();
-		 	}
-		 	catch(Exception e)
-		 	{
-		 		System.out.println("cannot execute the query");
-		 	}
-		 	finally
-		 	{
-		 		try{
-   		 		if (rs!=null && !rs.isClosed())
-   		 			rs.close();
-		 		}
-		 		catch(Exception e)
-		 		{
-		 			System.out.println("cannot close resultset");
-		 		}
-		 	}
-	    return output;
-	}
-	
 	/**
 	 *  Method to login to the UUber system
 	 */
@@ -96,7 +58,7 @@ public class GeneralOperations {
 		}
 		catch (Exception e) {
 			
-			System.out.println("ERROR: Cannot execute query for adding a new car.");
+			System.out.println("ERROR: Cannot execute query for logging into the system.");
 		}
 		finally {
 			
@@ -170,7 +132,7 @@ public class GeneralOperations {
 		}
 		catch (Exception e) {
 			
-			System.out.println("ERROR: Cannot execute query for adding a new car.");
+			System.out.println("ERROR: Cannot execute query for signing up a user.");
 		}
 		finally {
 			
@@ -187,7 +149,7 @@ public class GeneralOperations {
 			}
 		}
 		
-		return output + "\n\nYou have successfully signed up!";
+		return output + "\n\nYou have successfully signed up as a user!";
 	}
 	
 	/**
@@ -269,7 +231,7 @@ public class GeneralOperations {
 		}
 		catch (Exception e) {
 			
-			System.out.println("ERROR: Cannot execute query for adding a new car.");
+			System.out.println("ERROR: Cannot execute query for signing up as a driver.");
 		}
 		finally {
 			
@@ -286,7 +248,7 @@ public class GeneralOperations {
 			}
 		}
 		
-		return output + "\n\nYou have successfully signed up!";
+		return output + "\n\nYou have successfully signed up as a Driver!";
 	}
 	
 	/**
@@ -335,7 +297,7 @@ public class GeneralOperations {
 		}
 		catch (Exception e) {
 			
-			System.out.println("ERROR: Cannot execute query for adding a new car.");
+			System.out.println("ERROR: Cannot execute query for browsing for cars.");
 		}
 		finally {
 			
@@ -401,15 +363,49 @@ public class GeneralOperations {
 	}
 	
 	/**
-	 *  Method to sign up a user for the UUber system
+	 *  Method to get statistics related to the UUber System
 	 */
 	public static String getStatistics(Statement stmt) {
 		
-		
+		int statsChoice;
+		int m;
 		Scanner s = new Scanner(System.in);
 		
-		// TODO: Build the sql query for the db
-		String sql="";
+		// Ask the user which statistics they would like to see
+		System.out.println("What statistics would you like to see?");
+		System.out.println("1) Most Popular Cars");
+		System.out.println("2) Most Expensive Rides");
+		System.out.println("3) Highest Rated Drivers");
+		System.out.println("Enter Choice #: ");
+		statsChoice = s.nextInt();
+		
+		// Keep asking for input until sortChoice is a valid choice
+		while (statsChoice != 1 && statsChoice != 2 && statsChoice != 3) {
+			System.out.println("Invalid Input");
+			System.out.println("Enter Choice #: ");
+			statsChoice = s.nextInt();
+		}
+		
+		System.out.println("What number of the top results would you like to see?");
+		System.out.println("Enter #: ");
+		m = s.nextInt();
+		
+		String sql = "";
+		
+		switch(statsChoice) {
+			case 1:
+				// TODO: Build the sql query for the db for m results
+				sql = "";
+				break;
+			case 2:
+				// TODO: Build the sql query for the db for m results
+				sql = "";
+				break;
+			case 3:
+				// TODO: Build the sql query for the db for m results
+				sql = "";
+				break;
+		}
 		
 		// Output of the query to the db
 		String output="";
@@ -435,7 +431,7 @@ public class GeneralOperations {
 		}
 		catch (Exception e) {
 			
-			System.out.println("ERROR: Cannot execute query for adding a new car.");
+			System.out.println("ERROR: Cannot execute query for that statistic.");
 		}
 		finally {
 			
@@ -452,6 +448,90 @@ public class GeneralOperations {
 			}
 		}
 		
-		return output + "\n\nYou have successfully signed up!";
+		return output;
+	}
+	
+	/**
+	 *  Method to get statistics related to the UUber System in order for the admin user to give awards
+	 */
+	public static String getAdminAwards(Statement stmt) {
+		
+		int awardsChoice;
+		int m;
+		Scanner s = new Scanner(System.in);
+		
+		// Ask the admin what they would like to give awards for 
+		System.out.println("What statistics would you like to see in order to give awards?");
+		System.out.println("1) Most Trusted Users");
+		System.out.println("2) Most Helpful Users");
+		System.out.println("Enter Choice #: ");
+		awardsChoice = s.nextInt();
+		
+		// Keep asking for input until awardsChoice is a valid choice
+		while (awardsChoice != 1 && awardsChoice != 2) {
+			System.out.println("Invalid Input");
+			System.out.println("Enter Choice #: ");
+			awardsChoice = s.nextInt();
+		}
+		
+		System.out.println("What number of the top results would you like to see?");
+		System.out.println("Enter #: ");
+		m = s.nextInt();
+		
+		String sql = "";
+		
+		switch(awardsChoice) {
+			case 1:
+				// TODO: Build the sql query for the db for m results
+				sql = "";
+				break;
+			case 2:
+				// TODO: Build the sql query for the db for m results
+				sql = "";
+				break;
+		}
+		
+		// Output of the query to the db
+		String output="";
+		
+		// Let the console know what query is being executed
+		System.out.println("executing "+sql);
+		
+		// Result set for the query
+		ResultSet rs = null;
+		
+		// Execution of the query
+		try {
+			
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				// TODO: Add rs strings to the output
+				// output+=rs.getString("cname")+"   "+rs.getString("dname")+"\n";
+			}
+			
+			rs.close();
+		}
+		catch (Exception e) {
+			
+			System.out.println("ERROR: Cannot execute query for the admin to give awards.");
+		}
+		finally {
+			
+			try {
+				
+				if(rs != null || !rs.isClosed()) {
+					
+					rs.close();
+				}
+			}
+			catch (Exception e) {
+				
+				System.out.println("ERROR: Cannot close the result set.");
+			}
+		}
+		
+		return output;
 	}
 }

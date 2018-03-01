@@ -144,7 +144,7 @@ public class UDOperations {
 		}
 		catch (Exception e) {
 			
-			System.out.println("ERROR: Cannot execute query for adding a new car.");
+			System.out.println("ERROR: Cannot execute query for updating car details.");
 		}
 		finally {
 			
