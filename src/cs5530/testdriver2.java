@@ -77,12 +77,11 @@ public class testdriver2 {
 		 * BASED ON WHAT IS RETURNED FROM THOSE METHODS */
 		
 		/* THEN DISPLAY THE MENU RELATED TO WHO THEY ARE AS A USER... */
-		
+		Scanner input = new Scanner(System.in);
 		GeneralOperations.login(input, con.stmt);
-		
+		System.out.println("Welcome Driver!");
 				
 		//Decide what to do afterword
-		Scanner input = new Scanner(System.in);
 		int newResponse = 0;
 		switch(response)
 		{
