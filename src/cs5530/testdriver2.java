@@ -78,7 +78,7 @@ public class testdriver2 {
 		
 		/* THEN DISPLAY THE MENU RELATED TO WHO THEY ARE AS A USER... */
 		Scanner input = new Scanner(System.in);
-		GeneralOperations.login(input, con.stmt);
+		GeneralOperations.login(input, con);
 		System.out.println("Welcome Driver!");
 				
 		//Decide what to do afterword
