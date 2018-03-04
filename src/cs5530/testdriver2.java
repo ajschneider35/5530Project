@@ -55,10 +55,10 @@ public class testdriver2 {
 				displayMenu2(response);
 				break;
 			case 2:
-				GeneralOperations.signUpUser(con.stmt);
+				GeneralOperations.signUpUser(input, con.stmt);
 				break;
 			case 3: 
-				GeneralOperations.signUpDriver(con.stmt);
+				GeneralOperations.signUpDriver(input, con.stmt);
 				break;
 			case 4:
 				System.out.println("Goodbye!");
@@ -78,7 +78,7 @@ public class testdriver2 {
 		
 		/* THEN DISPLAY THE MENU RELATED TO WHO THEY ARE AS A USER... */
 		
-		GeneralOperations.login(con.stmt);
+		GeneralOperations.login(input, con.stmt);
 		
 				
 		//Decide what to do afterword
@@ -312,7 +312,7 @@ public class testdriver2 {
 		/*** SKELETON FOR HOW TO TAKE IN THE USERS' CHOICES ***/
 //		
 	try {
-		con= new Connector();
+		//con= new Connector();
 		displayMenu();
 
 //		        	System.out.println ("Database connection established");
