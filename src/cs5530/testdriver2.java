@@ -80,8 +80,10 @@ public class testdriver2 {
 		/* THEN DISPLAY THE MENU RELATED TO WHO THEY ARE AS A USER... */
 		Scanner input = new Scanner(System.in);
 		GeneralOperations.login(con.stmt);
-		System.out.println("Welcome Driver!");
-				
+
+		//Check what the type of person is based on login information using SQL Query
+		
+		
 		//Decide what to do afterword
 		int newResponse = 0;
 		switch(response)
