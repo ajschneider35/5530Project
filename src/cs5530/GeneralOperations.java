@@ -17,11 +17,10 @@ public class GeneralOperations {
 	/**
 	 *  Method to login to the UUber system
 	 */
-	public static String login(Statement stmt) {
+	public static String login(Scanner s, Statement stmt) {
 		
 		String username;
 		String password;
-		Scanner s = new Scanner(System.in);
 		
 		// Ask user for their username
 		System.out.println("Username: ");
@@ -85,13 +84,12 @@ public class GeneralOperations {
 	/**
 	 *  Method to sign up a user for the UUber system
 	 */
-	public static String signUpUser(Statement stmt) {
+	public static String signUpUser(Scanner s, Statement stmt) {
 		
 		String username;
 		String password;
 		String address;
 		String phoneNumber;
-		Scanner s = new Scanner(System.in);
 		
 		// Ask user for their username
 		System.out.println("Username: ");
@@ -165,7 +163,7 @@ public class GeneralOperations {
 	/**
 	 *  Method to sign up a driver for the UUber system
 	 */
-	public static String signUpDriver(Statement stmt) {
+	public static String signUpDriver(Scanner s, Statement stmt) {
 		
 		String username;
 		String password;
@@ -173,7 +171,6 @@ public class GeneralOperations {
 		String phoneNumber;
 		int uploadChoice;
 		String photoPathToFile;
-		Scanner s = new Scanner(System.in);
 		
 		// Ask user for their username
 		System.out.println("Username: ");
