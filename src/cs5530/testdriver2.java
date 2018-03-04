@@ -11,6 +11,7 @@ public class testdriver2 {
 	/**
 	 * @param args
 	 */
+	private static Connector con;
 	public static void displayMenu()
 	{	
 		// Represent this with a switch case that takes in a number to decide which menu to show for the user
@@ -25,28 +26,39 @@ public class testdriver2 {
 		System.out.println("2) Sign Up");
 		System.out.println("3) Sign Up as Driver");
 		System.out.println("4) Quit");
-		int response = input.nextInt();
 		
-		while (response != 1 || response != 2 || response != 3 || response != 4) {
-			
-			/* SWITCH CASE SHOULD BE OUTSIDE OF THIS WHILE LOOP, 
-			 * IF IT IS INSIDE THE RESPONSE WILL NEVER BE EQUAL TO ANY OF THE CASES.
-			 * THE WAY YOU HAVE IT RIGHT NOW, IF THEY ENTER A VALID INPUT THEN NOTHING WILL HAPPEN. */
-			
-			/* THIS WHILE LOOP WILL INFINITELY LOOP BECAUSE YOU NEVER ASK THEM FOR A NEW INPUT INSIDE
-			 * OF THE LOOP. THAT IS WHAT SHOULD BE IN HERE INSTEAD OF THE SWITCH CASE. SEE MY CODE WHERE
-			 * I DO THIS EXACT SAME THING FOR INPUTS. */
-			
+		while(!input.hasNextInt())
+		{
+			System.out.println("Incorrect Input. Please try again.");
+			input.next();
+		}
+		
+		int response = input.nextInt();
+
+		
+		while (response != 1 && response != 2 && response != 3 && response != 4) {
+			//Integer wasn't correct
+			if (response != 1 && response != 2 && response != 3 && response != 4) {
+				System.out.println("Incorrect Input. Please try again.");
+			}
+			while(!input.hasNextInt())
+			{
+				System.out.println("You didn't enter an integer. Please try again.");
+				input.next();
+			}
+			response = input.nextInt();
+		}
+
 			switch (response)
 			{
 			case 1:
 				displayMenu2(response);
 				break;
 			case 2:
-				displayMenu2(response);
+				GeneralOperations.signUpUser(con.stmt);
 				break;
 			case 3: 
-				displayMenu2(response);
+				GeneralOperations.signUpDriver(con.stmt);
 				break;
 			case 4:
 				System.out.println("Goodbye!");
@@ -56,7 +68,6 @@ public class testdriver2 {
 				System.out.println("Please Enter Response");
 				return;
 			}
-		}
 	}
 	public static void displayMenu2(int response) {
 		/* YOU NEED TO CALL THE METHODS RELATED TO THE CHOICE THEY PICKED IN THE FIRST MENU, 
@@ -67,12 +78,13 @@ public class testdriver2 {
 		
 		/* THEN DISPLAY THE MENU RELATED TO WHO THEY ARE AS A USER... */
 		
-		int type = response;
+		GeneralOperations.login(con.stmt);
 		
+				
 		//Decide what to do afterword
 		Scanner input = new Scanner(System.in);
-		int newResponse;
-		switch(type)
+		int newResponse = 0;
+		switch(response)
 		{
 		//If user is a driver
 		case 1: 
@@ -86,9 +98,14 @@ public class testdriver2 {
 			System.out.println("3) Browse Cars");
    	 		// Statistics
 			System.out.println("4) Statistics");
+			// Degree of separation
+			System.out.println("5) Degree Of Separation");
    	 		// Exit
-			System.out.println("5) Exit");
-			 newResponse = input.nextInt();
+			System.out.println("6) Exit");
+			checkAnswer(newResponse, input);
+			newResponse = input.nextInt();
+			parseDriverAnswer(newResponse);
+
 			break;
 		//If user is a rider
 		case 2:
@@ -110,9 +127,14 @@ public class testdriver2 {
 			System.out.println("7) Browse Cars");
    	 		// Statistics
 			System.out.println("8) Statistics");
+			// Degree of separation
+			System.out.println("9) Degree Of Separation");
    	 		// Exit
-			System.out.println("9) Exit");
+			System.out.println("10) Exit");
+			checkAnswer(newResponse, input);
 			newResponse = input.nextInt();
+			parseRiderAnswer(newResponse);
+
 			break;
 		//If user is an admin
 		case 3:
@@ -122,14 +144,163 @@ public class testdriver2 {
 			System.out.println("1) Give awards");
    	 		// Exit
 			System.out.println("2) Exit");
+			checkAnswer(newResponse, input);
 			newResponse = input.nextInt();
+			parseAdminAnswer(newResponse);
+
 			break;
-		default: 
-			System.out.println("User not recognized in system.");
 		}
 	}
-
 	
+	public static void checkAnswer(int response, Scanner input)
+	{
+		while(!input.hasNextInt())
+		{
+			System.out.println("Incorrect Input. Please try again.");
+			input.next();
+		}
+	}
+	
+	public static void parseDriverAnswer(int newResponse)
+	{
+		Scanner input = new Scanner(System.in);
+		
+		while (newResponse != 1 && newResponse != 2 && newResponse != 3 && newResponse != 4 && newResponse != 5 && newResponse != 6) {
+			//Integer wasn't correct
+			if (newResponse != 1 && newResponse != 2 && newResponse != 3 && newResponse != 4 && newResponse != 5 && newResponse != 6) {
+				System.out.println("Incorrect Input. Please try again.");
+			}
+			while(!input.hasNextInt())
+			{
+				System.out.println("You didn't enter an integer. Please try again.");
+				input.next();
+			}
+			newResponse = input.nextInt();
+		}
+
+			switch (newResponse)
+			{
+			case 1:
+				UDOperations.addNewCar(con.stmt);
+
+
+				break;
+			case 2:
+				UDOperations.updateCarDetails(con.stmt);
+
+
+				break;
+			case 3: 
+				GeneralOperations.howToBrowseCars(con.stmt);
+
+
+				break;
+			case 4: 
+				GeneralOperations.getStatistics(con.stmt);
+
+
+				break;			
+			case 5: 
+				GeneralOperations.getDegreeOfSeparation(con.stmt);
+
+
+				break;
+			case 6:
+				System.out.println("Goodbye!");
+				return;
+			}
+	}
+	public static void parseRiderAnswer(int newResponse)
+	{
+		Scanner input = new Scanner(System.in);
+		
+		while (newResponse != 1 && newResponse != 2 && newResponse != 3 && newResponse != 4 && newResponse != 5 && newResponse != 6 && newResponse != 7 && newResponse !=  8 && newResponse != 9 && newResponse != 10) {
+			//Integer wasn't correct
+			if (newResponse != 1 && newResponse != 2 && newResponse != 3 && newResponse != 4 && newResponse != 5 && newResponse != 6 && newResponse != 7 && newResponse !=  8 && newResponse != 9 && newResponse != 10) {
+				System.out.println("Incorrect Input. Please try again.");
+			}
+			while(!input.hasNextInt())
+			{
+				System.out.println("You didn't enter an integer. Please try again.");
+				input.next();
+			}
+			newResponse = input.nextInt();
+		}
+
+			switch (newResponse)
+			{
+			case 1:
+				UUOperations.reserveCar(con.stmt);
+
+
+				break;
+			case 2:
+				UUOperations.logARide(con.stmt);
+
+
+				break;
+			case 3: 
+				UUOperations.giveFeedback(con.stmt);
+
+
+				break;
+			case 4: 
+				UUOperations.getUsefulFeedbacks(con.stmt);
+
+
+				break;
+			case 5: 
+				UUOperations.updateTrustedUsers(con.stmt);
+
+
+				break;
+			case 6: 
+				UUOperations.updateFavoriteCar(con.stmt);
+
+
+				break;
+			case 7: 
+				GeneralOperations.howToBrowseCars(con.stmt);
+
+				break;
+			case 8: 
+				GeneralOperations.getStatistics(con.stmt);
+				break;
+			case 9: 
+				GeneralOperations.getDegreeOfSeparation(con.stmt);
+				break;
+			case 10:
+				System.out.println("Goodbye!");
+				return;
+			}
+	}
+	public static void parseAdminAnswer(int newResponse)
+	{
+		Scanner input = new Scanner(System.in);
+		
+		while (newResponse != 1 && newResponse != 2) {
+			//Integer wasn't correct
+			if (newResponse != 1 && newResponse != 2) {
+				System.out.println("Incorrect Input. Please try again.");
+			}
+			while(!input.hasNextInt())
+			{
+				System.out.println("You didn't enter an integer. Please try again.");
+				input.next();
+			}
+			newResponse = input.nextInt();
+		}
+
+			switch (newResponse)
+			{
+			case 1:
+				GeneralOperations.getAdminAwards(con.stmt);
+				break;
+			case 2:
+				System.out.println("Goodbye!");
+				break;
+			}
+	}
 	public static void main(String[] args) {
 //		Connector con=null;
 //		String choice;
@@ -137,12 +308,13 @@ public class testdriver2 {
 //		String dname;
 //		String sql=null;
 //		int c=0;
-		displayMenu();
         
 		/*** SKELETON FOR HOW TO TAKE IN THE USERS' CHOICES ***/
 //		
-//		try {
-//		        	con= new Connector();
+	try {
+		con= new Connector();
+		displayMenu();
+
 //		        	System.out.println ("Database connection established");
 //		 
 //		        	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -192,9 +364,9 @@ public class testdriver2 {
 //			         break;
 //			     }
 //		     }
-//		}
-//		catch (Exception e)
-//		{
+	}
+	catch (Exception e)
+	{
 //		   	e.printStackTrace();
 //		    	System.err.println ("Either connection error or query execution error!");
 //		}
@@ -209,6 +381,6 @@ public class testdriver2 {
 //		    		}
 //		    		catch (Exception e) { /* ignore close errors */ }
 //		    	}	 
-//		}
+	}
 	}
 }
