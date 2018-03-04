@@ -27,16 +27,16 @@ public class GeneralOperations {
 		System.out.println("Username: ");
 		username = s.nextLine();
 		System.out.println("\n");
-		
+		/*
 		// Ask user for their password
 		System.out.println("Password: ");
 		password = s.nextLine();
 		System.out.println("\n");
-		
+		*/
 		s.close();
 		
 		// TODO: Build the sql query for the db
-		String sql="";
+		String sql="select login from uu where login='" + username + "'";
 		
 		// Output of the query to the db
 		String output="";
@@ -55,7 +55,7 @@ public class GeneralOperations {
 			while(rs.next()) {
 				
 				// TODO: Add rs strings to the output
-				// output+=rs.getString("cname")+"   "+rs.getString("dname")+"\n";
+				output+=rs.getString("login") + "\n";
 			}
 			
 			rs.close();
