@@ -181,28 +181,18 @@ public class testdriver2 {
 			{
 			case 1:
 				UDOperations.addNewCar(con.stmt);
-
-
 				break;
 			case 2:
 				UDOperations.updateCarDetails(con.stmt);
-
-
 				break;
 			case 3: 
 				GeneralOperations.howToBrowseCars(con.stmt);
-
-
 				break;
 			case 4: 
 				GeneralOperations.getStatistics(con.stmt);
-
-
 				break;			
 			case 5: 
 				GeneralOperations.getDegreeOfSeparation(con.stmt);
-
-
 				break;
 			case 6:
 				System.out.println("Goodbye!");
@@ -230,37 +220,24 @@ public class testdriver2 {
 			{
 			case 1:
 				UUOperations.reserveCar(con.stmt);
-
-
 				break;
 			case 2:
 				UUOperations.logARide(con.stmt);
-
-
 				break;
 			case 3: 
 				UUOperations.giveFeedback(con.stmt);
-
-
 				break;
 			case 4: 
 				UUOperations.getUsefulFeedbacks(con.stmt);
-
-
 				break;
 			case 5: 
 				UUOperations.updateTrustedUsers(con.stmt);
-
-
 				break;
 			case 6: 
 				UUOperations.updateFavoriteCar(con.stmt);
-
-
 				break;
 			case 7: 
 				GeneralOperations.howToBrowseCars(con.stmt);
-
 				break;
 			case 8: 
 				GeneralOperations.getStatistics(con.stmt);
@@ -289,7 +266,6 @@ public class testdriver2 {
 			}
 			newResponse = input.nextInt();
 		}
-
 			switch (newResponse)
 			{
 			case 1:
@@ -311,7 +287,7 @@ public class testdriver2 {
 		/*** SKELETON FOR HOW TO TAKE IN THE USERS' CHOICES ***/
 //		
 	try {
-		//con= new Connector();
+		con= new Connector();
 		displayMenu();
 
 //		        	System.out.println ("Database connection established");
