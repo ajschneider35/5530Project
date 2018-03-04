@@ -28,6 +28,9 @@ public class UDOperations {
 		
 		// Ask for VIN number of the car
 		System.out.println("Enter VIN Number: ");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
 		vin = s.nextInt();
 		
 		// Ask for Make of the car
@@ -40,6 +43,9 @@ public class UDOperations {
 		
 		// Ask for Year of the car
 		System.out.println("Enter Vehicle Production Year: ");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
 		year = s.nextInt();
 		
 		s.close();
@@ -105,6 +111,9 @@ public class UDOperations {
 		
 		// Ask for VIN number of the car
 		System.out.println("Enter VIN Number: ");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
 		vin = s.nextInt();
 		
 		// Ask for Make of the car
@@ -117,6 +126,9 @@ public class UDOperations {
 		
 		// Ask for Year of the car
 		System.out.println("Enter Vehicle Production Year: ");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
 		year = s.nextInt();
 		
 		s.close();

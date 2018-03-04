@@ -200,6 +200,9 @@ public class GeneralOperations {
 		System.out.println("1) Yes");
 		System.out.println("2) No");
 		System.out.println("Enter Choice #: ");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
 		uploadChoice = s.nextInt();
 		System.out.println("\n");
 		
@@ -207,6 +210,9 @@ public class GeneralOperations {
 		while (uploadChoice != 1 && uploadChoice != 2) {
 			System.out.println("Invalid Input");
 			System.out.println("Enter Choice #: ");
+			while(!s.hasNextInt()) {
+			    s.next();
+			}
 			uploadChoice = s.nextInt();
 			System.out.println("\n");
 		}
@@ -368,6 +374,9 @@ public class GeneralOperations {
 		System.out.println("1) By average feedback ratings");
 		System.out.println("2) By average score of trusted users' feedback ratings");
 		System.out.println("Enter Choice #: ");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
 		sortChoice = s.nextInt();
 		System.out.println("\n");
 		
@@ -375,6 +384,9 @@ public class GeneralOperations {
 		while (sortChoice != 1 && sortChoice != 2) {
 			System.out.println("Invalid Input");
 			System.out.println("Enter Choice #: ");
+			while(!s.hasNextInt()) {
+			    s.next();
+			}
 			sortChoice = s.nextInt();
 			System.out.println("\n");
 		}
@@ -399,6 +411,9 @@ public class GeneralOperations {
 		System.out.println("2) Most Expensive Rides");
 		System.out.println("3) Highest Rated Drivers");
 		System.out.println("Enter Choice #: ");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
 		statsChoice = s.nextInt();
 		System.out.println("\n");
 		
@@ -406,12 +421,18 @@ public class GeneralOperations {
 		while (statsChoice != 1 && statsChoice != 2 && statsChoice != 3) {
 			System.out.println("Invalid Input");
 			System.out.println("Enter Choice #: ");
+			while(!s.hasNextInt()) {
+			    s.next();
+			}
 			statsChoice = s.nextInt();
 			System.out.println("\n");
 		}
 		
 		System.out.println("What number of the top results would you like to see?");
 		System.out.println("Enter #: ");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
 		m = s.nextInt();
 		System.out.println("\n");
 		
@@ -492,6 +513,9 @@ public class GeneralOperations {
 		System.out.println("1) Most Trusted Users");
 		System.out.println("2) Most Helpful Users");
 		System.out.println("Enter Choice #: ");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
 		awardsChoice = s.nextInt();
 		System.out.println("\n");
 		
@@ -499,12 +523,18 @@ public class GeneralOperations {
 		while (awardsChoice != 1 && awardsChoice != 2) {
 			System.out.println("Invalid Input");
 			System.out.println("Enter Choice #: ");
+			while(!s.hasNextInt()) {
+			    s.next();
+			}
 			awardsChoice = s.nextInt();
 			System.out.println("\n");
 		}
 		
 		System.out.println("What number of the top results would you like to see?");
 		System.out.println("Enter #: ");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
 		m = s.nextInt();
 		System.out.println("\n");
 		
