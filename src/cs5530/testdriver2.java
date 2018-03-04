@@ -25,35 +25,43 @@ public class testdriver2 {
 		System.out.println("2) Sign Up");
 		System.out.println("3) Sign Up as Driver");
 		System.out.println("4) Quit");
-
 		int response = input.nextInt();
 		while (response != 1 || response != 2 || response != 3 || response != 4) {
-			if (response == 1 || response == 2 || response == 3)
+			switch (response)
 			{
+			case 1:
 				displayMenu2(response);
-			}
-			else if (response == 4)
-			{
+				break;
+			case 2:
+				displayMenu2(response);
+				break;
+			case 3: 
+				displayMenu2(response);
+				break;
+			case 4:
+				System.out.println("Goodbye!");
 				return;
-			}
-			else
-			{
+			default: 
 				System.out.println("Invalid Input");
 				System.out.println("Please Enter Response");
+				return;
 			}
 		}
 	}
 	public static void displayMenu2(int response) {
 		//NEED TO ANALYZE THE LOGIN INFORMATION TO DECIDE WHO IS LOGGING IN
+		int type = response;
 		
+		//Decide what to do afterword
 		Scanner input = new Scanner(System.in);
-		int newResponse = input.nextInt();
-		System.out.println("Welcome!");
-		System.out.println("Please enter your choice:");
-   	 	//If the user is a driver show these options
-		if(response == 3)
+		int newResponse;
+		switch(type)
 		{
-   	 		// Add new car
+		//If user is a driver
+		case 1: 
+			System.out.println("Welcome Driver!");
+			System.out.println("Please enter your choice:");
+  	 		// Add new car
 			System.out.println("1) Add new car");
    	 		// Update car details
 			System.out.println("2) Car Details");
@@ -63,11 +71,12 @@ public class testdriver2 {
 			System.out.println("4) Statistics");
    	 		// Exit
 			System.out.println("5) Exit");
-		}
-
-   	 	// If the user is a rider show these options
-		else if (response == 1 || response == 2)
-		{
+			 newResponse = input.nextInt();
+			break;
+		//If user is a rider
+		case 2:
+			System.out.println("Welcome Rider!");
+			System.out.println("Please enter your choice:");
    	 		// Reserve Car
 			System.out.println("1) Reserve Car");
    	 		// Log a ride
@@ -86,96 +95,103 @@ public class testdriver2 {
 			System.out.println("8) Statistics");
    	 		// Exit
 			System.out.println("9) Exit");
-		}
-   	 	// If user is admin user show these options
-		else {
+			newResponse = input.nextInt();
+			break;
+		//If user is an admin
+		case 3:
+			System.out.println("Welcome Admin!");
+			System.out.println("Please enter your choice:");
    	 		// Give awards
 			System.out.println("1) Give awards");
    	 		// Exit
 			System.out.println("2) Exit");
+			newResponse = input.nextInt();
+			break;
+		default: 
+			System.out.println("User not recognized in system.");
 		}
 	}
 
 	
 	public static void main(String[] args) {
-		System.out.println("Example for cs5530");
-		Connector con=null;
-		String choice;
-		String cname;
-		String dname;
-		String sql=null;
-		int c=0;
+//		Connector con=null;
+//		String choice;
+//		String cname;
+//		String dname;
+//		String sql=null;
+//		int c=0;
+		displayMenu();
         
 		/*** SKELETON FOR HOW TO TAKE IN THE USERS' CHOICES ***/
-		
-		try {
-		        	con= new Connector();
-		        	System.out.println ("Database connection established");
-		 
-		        	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		     
-			    while(true) {
-				    	displayMenu();
-				    	while ((choice = in.readLine()) == null && choice.length() == 0);
-				    try {
-				    		c = Integer.parseInt(choice);
-				    }
-				    catch (Exception e) {
-				    		continue;
-				    } 
-			        	if (c<1 | c>3)
-			        		 continue;
-			        	if (c==1)
-			        	{
-			        		 System.out.println("please enter a cname:");
-			        		 while ((cname = in.readLine()) == null && cname.length() == 0);
-			    		 System.out.println("please enter a dname:");
-			    		 while ((dname = in.readLine()) == null && dname.length() == 0);
-			    		 Course course=new Course();
-			    		 System.out.println(course.getCourse(cname, dname, con.stmt));
-			    	 }
-			    	 else if (c==2)
-			    	 {	 
-			    		 System.out.println("please enter your query below:");
-			    		 while ((sql = in.readLine()) == null && sql.length() == 0)
-			    			 System.out.println(sql);
-			    		 ResultSet rs=con.stmt.executeQuery(sql);
-			    		 ResultSetMetaData rsmd = rs.getMetaData();
-			    		 int numCols = rsmd.getColumnCount();
-			    		 while (rs.next())
-			    		 {
-			    			 //System.out.print("cname:");
-			    			 for (int i=1; i<=numCols;i++)
-			    				 System.out.print(rs.getString(i)+"  ");
-			    			 System.out.println("");
-			    		 }
-			    		 System.out.println(" ");
-			    		 rs.close();
-			    	 }
-			    	 else
-			    	 {   
-			    		 System.out.println("EoM");
-			         con.stmt.close(); 
-			         break;
-			     }
-		     }
-		}
-		catch (Exception e)
-		{
-		   	e.printStackTrace();
-		    	System.err.println ("Either connection error or query execution error!");
-		}
-		finally
-		{
-		  	if (con != null)
-		    	{
-		    		try
-		    		{
-		    			con.closeConnection();
-		    			System.out.println ("Database connection terminated");
-		    		}
-		    		catch (Exception e) { /* ignore close errors */ }
-		    	}	 
-		}
+//		
+//		try {
+//		        	con= new Connector();
+//		        	System.out.println ("Database connection established");
+//		 
+//		        	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+//		     
+//			    while(true) {
+//				    	displayMenu();
+//				    	while ((choice = in.readLine()) == null && choice.length() == 0);
+//				    try {
+//				    		c = Integer.parseInt(choice);
+//				    }
+//				    catch (Exception e) {
+//				    		continue;
+//				    } 
+//			        	if (c<1 | c>3)
+//			        		 continue;
+//			        	if (c==1)
+//			        	{
+//			        		 System.out.println("please enter a cname:");
+//			        		 while ((cname = in.readLine()) == null && cname.length() == 0);
+//			    		 System.out.println("please enter a dname:");
+//			    		 while ((dname = in.readLine()) == null && dname.length() == 0);
+//			    		 Course course=new Course();
+//			    		 System.out.println(course.getCourse(cname, dname, con.stmt));
+//			    	 }
+//			    	 else if (c==2)
+//			    	 {	 
+//			    		 System.out.println("please enter your query below:");
+//			    		 while ((sql = in.readLine()) == null && sql.length() == 0)
+//			    			 System.out.println(sql);
+//			    		 ResultSet rs=con.stmt.executeQuery(sql);
+//			    		 ResultSetMetaData rsmd = rs.getMetaData();
+//			    		 int numCols = rsmd.getColumnCount();
+//			    		 while (rs.next())
+//			    		 {
+//			    			 //System.out.print("cname:");
+//			    			 for (int i=1; i<=numCols;i++)
+//			    				 System.out.print(rs.getString(i)+"  ");
+//			    			 System.out.println("");
+//			    		 }
+//			    		 System.out.println(" ");
+//			    		 rs.close();
+//			    	 }
+//			    	 else
+//			    	 {   
+//			    		 System.out.println("EoM");
+//			         con.stmt.close(); 
+//			         break;
+//			     }
+//		     }
+//		}
+//		catch (Exception e)
+//		{
+//		   	e.printStackTrace();
+//		    	System.err.println ("Either connection error or query execution error!");
+//		}
+//		finally
+//		{
+//		  	if (con != null)
+//		    	{
+//		    		try
+//		    		{
+//		    			con.closeConnection();
+//		    			System.out.println ("Database connection terminated");
+//		    		}
+//		    		catch (Exception e) { /* ignore close errors */ }
+//		    	}	 
+//		}
 	}
 }
