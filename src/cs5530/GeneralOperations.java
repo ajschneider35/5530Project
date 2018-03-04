@@ -42,7 +42,7 @@ public class GeneralOperations {
 		String output="";
 		
 		// Let the console know what query is being executed
-		System.out.println("executing "+sql);
+		System.out.println("Executing "+sql);
 		
 		// Result set for the query
 		ResultSet rs = null;
