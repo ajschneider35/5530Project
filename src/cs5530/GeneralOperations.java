@@ -566,4 +566,75 @@ public class GeneralOperations {
 		
 		return output;
 	}
+	
+	/**
+	 *  Method to allow the user to mark another user as trusted or not trusted
+	 */
+	public static String getDegreeOfSeparation(Statement stmt) {
+		
+		String user1;
+		String user2;
+		
+		Scanner s = new Scanner(System.in);
+		
+		// Ask for username 1
+		System.out.println("What is the first username?");
+		user1 = s.nextLine();
+		System.out.println("\n");
+		
+		// Ask for username 2
+		System.out.println("What is the second username?");
+		user2 = s.nextLine();
+		System.out.println("\n");
+		
+		// TODO: Figure out how to determine how many degrees of separation there are between the two before sql query
+		
+		s.close();
+		
+		// TODO: build sql query
+		String sql = "";
+		
+		// Output of the query to the db
+		String output="";
+		
+		// Let the console know what query is being executed
+		System.out.println("executing "+sql);
+		
+		// Result set for the query
+		ResultSet rs = null;
+		
+		// Execution of the query
+		try {
+			
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				// TODO: Add rs strings to the output
+				// output+=rs.getString("cname")+"   "+rs.getString("dname")+"\n";
+			}
+			
+			rs.close();
+		}
+		catch (Exception e) {
+			
+			System.out.println("ERROR: Cannot execute query for the user to reserve a car.");
+		}
+		finally {
+			
+			try {
+				
+				if(rs != null || !rs.isClosed()) {
+					
+					rs.close();
+				}
+			}
+			catch (Exception e) {
+				
+				System.out.println("ERROR: Cannot close the result set.");
+			}
+		}
+		
+		return output;
+	}
 }
