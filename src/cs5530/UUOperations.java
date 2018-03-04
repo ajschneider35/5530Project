@@ -18,7 +18,7 @@ public class UUOperations {
 	 *  Method to allow the user to reserve a car for a future date
 	 */
 	public static String reserveCar(Statement stmt) {
-		
+
 		Scanner s = new Scanner(System.in);
 		
 		// TODO: Ask the user when they want to reserve the car for
@@ -139,7 +139,7 @@ public class UUOperations {
 	 *  Method to allow the user to give feedback on a ride
 	 */
 	public static String giveFeedback(Statement stmt) {
-		
+
 		// TODO: Instantiate variables needed for input
 		
 		Scanner s = new Scanner(System.in);
