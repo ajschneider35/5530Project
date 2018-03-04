@@ -56,10 +56,10 @@ public class testdriver2 {
 				displayMenu2(response);
 				break;
 			case 2:
-				GeneralOperations.signUpUser(input, con.stmt);
+				GeneralOperations.signUpUser(con.stmt);
 				break;
 			case 3: 
-				GeneralOperations.signUpDriver(input, con.stmt);
+				GeneralOperations.signUpDriver(con.stmt);
 				break;
 			case 4:
 				System.out.println("Goodbye!");
@@ -79,7 +79,7 @@ public class testdriver2 {
 		
 		/* THEN DISPLAY THE MENU RELATED TO WHO THEY ARE AS A USER... */
 		Scanner input = new Scanner(System.in);
-		GeneralOperations.login(input, con.stmt);
+		GeneralOperations.login(con.stmt);
 		System.out.println("Welcome Driver!");
 				
 		//Decide what to do afterword
