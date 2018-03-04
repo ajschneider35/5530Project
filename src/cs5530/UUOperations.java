@@ -19,14 +19,14 @@ public class UUOperations {
 	 */
 	public static String reserveCar(Statement stmt) {
 		
-		// TODO: Instantiate variables needed for input
-		
 		Scanner s = new Scanner(System.in);
 		
-		// As the user when they want to reserve the car for
+		// TODO: Ask the user when they want to reserve the car for
 		// Take input
+		// date =
+		// time =
 		
-		// TODO: Is there any other input needed except for when they want to reserve the car?
+		// TODO: Figure out exactly what info is needed for reserving a car
 		
 		s.close();
 		
@@ -85,7 +85,7 @@ public class UUOperations {
 		
 		Scanner s = new Scanner(System.in);
 		
-		// TODO: Take input
+		// TODO: Figure out what information is needed to log a ride
 		
 		s.close();
 		
@@ -148,6 +148,7 @@ public class UUOperations {
 		
 		s.close();
 		
+		// TODO: build sql query to give feedback
 		String sql = "";
 		
 		// Output of the query to the db
@@ -207,6 +208,7 @@ public class UUOperations {
 		
 		s.close();
 		
+		// TODO: Create sql query for the feedback request
 		String sql = "";
 		
 		// Output of the query to the db
@@ -256,17 +258,37 @@ public class UUOperations {
 	/**
 	 *  Method to allow the user to mark another user as trusted or not trusted
 	 */
-	public static String updateTrustedUsers(Statement stmt) {
+	public static String updateTrustedUsers(/*Takes in username from person logged into the system*/ Statement stmt) {
 		
-		// TODO: Instantiate variables needed for input
+		String currentUser;
+		String otherUser;
+		String trust;
 		
 		Scanner s = new Scanner(System.in);
 		
-		// TODO: Take input
+		// Ask current user what user they want to update the trusted rating for
+		System.out.println("Of which user would you like to update the trusted rating?");
+		System.out.println("Enter their username: ");
+		otherUser = s.nextLine();
+		System.out.println("\n");
 		
+		// Ask current user if they would like to mark them as trusted or not trusted?
+		System.out.println("Would you like to mark this user as 'trusted' or 'not-trusted'?");
+		System.out.println("Please type answer EXACTLY as specified in the question above.");
+		trust = s.nextLine();
+		System.out.println("\n");
+		
+		while(!trust.equals("trusted") || !trust.equals("not-trusted")) {
+			
+			System.out.println("Invalid input");
+			System.out.println("Please type answer EXACTLY as specified in the question above.");
+			trust = s.nextLine();
+			System.out.println("\n");
+		}
 		
 		s.close();
 		
+		// TODO: build sql query
 		String sql = "";
 		
 		// Output of the query to the db
@@ -316,7 +338,7 @@ public class UUOperations {
 	/**
 	 *  Method to allow the user to designate a car that is their favorite to hire
 	 */
-	public static String updateFavoriteCar(Statement stmt) {
+	public static String updateFavoriteCar(/*Takes in info of user that is logged in*/ Statement stmt) {
 		
 		String driverUsername;
 		String make;
@@ -339,6 +361,7 @@ public class UUOperations {
 		
 		s.close();
 		
+		// TODO: build sql query
 		String sql = "";
 		
 		// Output of the query to the db

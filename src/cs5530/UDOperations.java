@@ -42,6 +42,8 @@ public class UDOperations {
 		System.out.println("Enter Vehicle Production Year: ");
 		year = s.nextInt();
 		
+		s.close();
+		
 		// TODO: Build the sql query for the db
 		String sql="";
 		
@@ -116,6 +118,8 @@ public class UDOperations {
 		// Ask for Year of the car
 		System.out.println("Enter Vehicle Production Year: ");
 		year = s.nextInt();
+		
+		s.close();
 		
 		// TODO: Build the sql query for the db
 		String sql="";
