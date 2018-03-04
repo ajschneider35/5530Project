@@ -26,7 +26,17 @@ public class testdriver2 {
 		System.out.println("3) Sign Up as Driver");
 		System.out.println("4) Quit");
 		int response = input.nextInt();
+		
 		while (response != 1 || response != 2 || response != 3 || response != 4) {
+			
+			/* SWITCH CASE SHOULD BE OUTSIDE OF THIS WHILE LOOP, 
+			 * IF IT IS INSIDE THE RESPONSE WILL NEVER BE EQUAL TO ANY OF THE CASES.
+			 * THE WAY YOU HAVE IT RIGHT NOW, IF THEY ENTER A VALID INPUT THEN NOTHING WILL HAPPEN. */
+			
+			/* THIS WHILE LOOP WILL INFINITELY LOOP BECAUSE YOU NEVER ASK THEM FOR A NEW INPUT INSIDE
+			 * OF THE LOOP. THAT IS WHAT SHOULD BE IN HERE INSTEAD OF THE SWITCH CASE. SEE MY CODE WHERE
+			 * I DO THIS EXACT SAME THING FOR INPUTS. */
+			
 			switch (response)
 			{
 			case 1:
@@ -49,7 +59,14 @@ public class testdriver2 {
 		}
 	}
 	public static void displayMenu2(int response) {
-		//NEED TO ANALYZE THE LOGIN INFORMATION TO DECIDE WHO IS LOGGING IN
+		/* YOU NEED TO CALL THE METHODS RELATED TO THE CHOICE THEY PICKED IN THE FIRST MENU, 
+		 * NOT DISPLAY A NEW MENU YET */
+		
+		/* FOLLOWING THOSE METHOD CALLS, THEN YOU NEED TO DETERMINE WHAT TYPE OF USER THEY ARE
+		 * BASED ON WHAT IS RETURNED FROM THOSE METHODS */
+		
+		/* THEN DISPLAY THE MENU RELATED TO WHO THEY ARE AS A USER... */
+		
 		int type = response;
 		
 		//Decide what to do afterword
