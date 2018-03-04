@@ -26,10 +26,14 @@ public class GeneralOperations {
 		// Ask user for their username
 		System.out.println("Username: ");
 		username = s.nextLine();
+		System.out.println("\n");
 		
 		// Ask user for their password
 		System.out.println("Password: ");
 		password = s.nextLine();
+		System.out.println("\n");
+		
+		s.close();
 		
 		// TODO: Build the sql query for the db
 		String sql="";
@@ -92,18 +96,24 @@ public class GeneralOperations {
 		// Ask user for their username
 		System.out.println("Username: ");
 		username = s.nextLine();
+		System.out.println("\n");
 		
 		// Ask user for their password
 		System.out.println("Password: ");
 		password = s.nextLine();
+		System.out.println("\n");
 		
 		// Ask user for their address
 		System.out.println("Address: ");
 		password = s.nextLine();
+		System.out.println("\n");
 		
 		// Ask user for their password
 		System.out.println("Phone Number: ");
 		password = s.nextLine();
+		System.out.println("\n");
+		
+		s.close();
 		
 		// TODO: Build the sql query for the db
 		String sql="";
@@ -168,18 +178,22 @@ public class GeneralOperations {
 		// Ask user for their username
 		System.out.println("Username: ");
 		username = s.nextLine();
+		System.out.println("\n");
 		
 		// Ask user for their password
 		System.out.println("Password: ");
 		password = s.nextLine();
+		System.out.println("\n");
 		
 		// Ask user for their address
 		System.out.println("Address: ");
 		password = s.nextLine();
+		System.out.println("\n");
 		
 		// Ask user for their password
 		System.out.println("Phone Number: ");
 		password = s.nextLine();
+		System.out.println("\n");
 		
 		// Ask user if they would like to upload a photo
 		System.out.println("Would you like to upload a profile picture for your account?");
@@ -187,12 +201,14 @@ public class GeneralOperations {
 		System.out.println("2) No");
 		System.out.println("Enter Choice #: ");
 		uploadChoice = s.nextInt();
+		System.out.println("\n");
 		
 		// Keep asking for input until sortChoice is a valid choice
 		while (uploadChoice != 1 && uploadChoice != 2) {
 			System.out.println("Invalid Input");
 			System.out.println("Enter Choice #: ");
 			uploadChoice = s.nextInt();
+			System.out.println("\n");
 		}
 		
 		// If they decide to upload a photo
@@ -200,9 +216,12 @@ public class GeneralOperations {
 			// Ask for the path to the file
 			System.out.println("Enter Path to Image File: ");
 			photoPathToFile = s.nextLine();
+			System.out.println("\n");
 		}
 		
 		// TODO: Figure out how to get filepath to photoblob
+		
+		s.close();
 		
 		// TODO: Build the sql query for the db
 		String sql="";
@@ -350,14 +369,17 @@ public class GeneralOperations {
 		System.out.println("2) By average score of trusted users' feedback ratings");
 		System.out.println("Enter Choice #: ");
 		sortChoice = s.nextInt();
+		System.out.println("\n");
 		
 		// Keep asking for input until sortChoice is a valid choice
 		while (sortChoice != 1 && sortChoice != 2) {
 			System.out.println("Invalid Input");
 			System.out.println("Enter Choice #: ");
 			sortChoice = s.nextInt();
+			System.out.println("\n");
 		}
-		System.out.println("\n");
+		
+		s.close();
 		
 		return browseCars(city, state, keyphrase, sortChoice, stmt);
 	}
@@ -378,17 +400,22 @@ public class GeneralOperations {
 		System.out.println("3) Highest Rated Drivers");
 		System.out.println("Enter Choice #: ");
 		statsChoice = s.nextInt();
+		System.out.println("\n");
 		
 		// Keep asking for input until sortChoice is a valid choice
 		while (statsChoice != 1 && statsChoice != 2 && statsChoice != 3) {
 			System.out.println("Invalid Input");
 			System.out.println("Enter Choice #: ");
 			statsChoice = s.nextInt();
+			System.out.println("\n");
 		}
 		
 		System.out.println("What number of the top results would you like to see?");
 		System.out.println("Enter #: ");
 		m = s.nextInt();
+		System.out.println("\n");
+		
+		s.close();
 		
 		String sql = "";
 		
@@ -466,17 +493,22 @@ public class GeneralOperations {
 		System.out.println("2) Most Helpful Users");
 		System.out.println("Enter Choice #: ");
 		awardsChoice = s.nextInt();
+		System.out.println("\n");
 		
 		// Keep asking for input until awardsChoice is a valid choice
 		while (awardsChoice != 1 && awardsChoice != 2) {
 			System.out.println("Invalid Input");
 			System.out.println("Enter Choice #: ");
 			awardsChoice = s.nextInt();
+			System.out.println("\n");
 		}
 		
 		System.out.println("What number of the top results would you like to see?");
 		System.out.println("Enter #: ");
 		m = s.nextInt();
+		System.out.println("\n");
+		
+		s.close();
 		
 		String sql = "";
 		
