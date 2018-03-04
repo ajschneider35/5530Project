@@ -11,7 +11,8 @@ public class testdriver2 {
 	/**
 	 * @param args
 	 */
-	private static Connector con;
+	public static Connector con;
+	
 	public static void displayMenu()
 	{	
 		// Represent this with a switch case that takes in a number to decide which menu to show for the user
