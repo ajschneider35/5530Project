@@ -17,7 +17,7 @@ public class GeneralOperations {
 	/**
 	 *  Method to login to the UUber system
 	 */
-	public static String login(Statement stmt) {
+	public static String login(Statement stmt, int userType) {
 		
 		String username;
 		String password;
@@ -35,8 +35,22 @@ public class GeneralOperations {
 		*/
 		s.close();
 		
-		// TODO: Build the sql query for the db
-		String sql="select login from uu where login='" + username + "'";
+		String sql = "";
+		
+		switch(userType) {
+			case 1:
+				// User is a rider
+				sql="select login from uu where login='" + username + "';";
+				break;
+			case 2:
+				// User is a driver
+				sql="select login from ud where login='" + username + "';";
+				break;
+			case 3:
+				// User is the admin
+				sql="select login from uu where login='" + username + "';";
+				break;
+		}
 		
 		// Output of the query to the db
 		String output="";
@@ -79,7 +93,7 @@ public class GeneralOperations {
 			}
 		}
 		
-		return output + "\n\nYou have successfully logged in!";
+		return output;
 	}
 	
 	/**
