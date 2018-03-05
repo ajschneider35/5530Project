@@ -79,13 +79,72 @@ public class UUOperations {
 	/**
 	 *  Method to allow the user to log a ride that they took with a driver
 	 */
-	public static String logARide(Statement stmt) {
+	public static String logARide(/* TAKES IN THE USER'S LOGIN*/Statement stmt) {
 		
-		// TODO: Instantiate variables needed for input
+		int vin;
+		double cost;
+		String date;
+		String[] dateSplit;
+		String fromHour;
+		String[] fromHourSplit;
+		String toHour;
+		String[] toHourSplit;
 		
 		Scanner s = new Scanner(System.in);
 		
-		// TODO: Figure out what information is needed to log a ride
+		System.out.println("On which date did the ride take place?");
+		System.out.println("Enter the date in the format YYYY-MM-DD");
+		date = s.nextLine();
+		dateSplit = date.split("-");
+		while(dateSplit.length != 3 || 
+				(dateSplit[0].length() != 4 || dateSplit[1].length() != 2 || dateSplit[2].length() != 2)) {
+			
+			System.out.println("Invalid input. Please follow the format from above.");
+			System.out.println("Enter new date: ");
+			date = s.nextLine();
+			dateSplit = date.split("-");
+		}
+		System.out.println("\n");
+		
+		System.out.println("What time did the ride start?");
+		System.out.println("Enter time in the format HH:MM in MILITARY time.");
+		fromHour = s.nextLine();
+		fromHourSplit = fromHour.split(":");
+		while(fromHourSplit.length != 2 || 
+				(fromHourSplit[0].length() != 2 || fromHourSplit[1].length() != 2)) {
+			
+			System.out.println("Invalid input. Please enter the time again.");
+		    fromHour = s.nextLine();
+		    fromHourSplit = fromHour.split(":");
+		}
+		System.out.println("\n");
+		
+		System.out.println("What time did the ride end?");
+		System.out.println("Enter time in the format HH:MM in MILITARY time.");
+		toHour = s.nextLine();
+		toHourSplit = toHour.split(":");
+		while(toHourSplit.length != 2 || 
+				(toHourSplit[0].length() != 2 || toHourSplit[1].length() != 2)) {
+			
+			System.out.println("Invalid input. Please enter the time again.");
+		    toHour = s.nextLine();
+		    toHourSplit = toHour.split(":");
+		}
+		System.out.println("\n");
+		
+		System.out.println("How much did the ride cost?");
+		System.out.println("Enter cost in the format #.##");
+		while(!s.hasNextDouble()) {
+		    s.next();
+		}
+		cost = s.nextDouble();
+		
+		System.out.println("What was the vin number of the car?");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
+		vin = s.nextInt();
+		System.out.println("\n");
 		
 		s.close();
 		
