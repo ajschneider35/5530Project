@@ -23,10 +23,12 @@ public class testdriver2 {
 		Scanner input = new Scanner(System.in);
 	    	/*** MENU 1 ***/
 		System.out.println("        Welcome to UUber System     ");
-		System.out.println("1) Login");
-		System.out.println("2) Sign Up");
-		System.out.println("3) Sign Up as Driver");
-		System.out.println("4) Quit");
+		System.out.println("1) Login as User");
+		System.out.println("2) Login as Driver");
+		System.out.println("3) Login as Admin");
+		System.out.println("4) Sign Up as User");
+		System.out.println("5) Sign Up as Driver");
+		System.out.println("6) Quit");
 		
 		while(!input.hasNextInt())
 		{
@@ -37,9 +39,9 @@ public class testdriver2 {
 		int response = input.nextInt();
 
 		
-		while (response != 1 && response != 2 && response != 3 && response != 4) {
+		while (response != 1 && response != 2 && response != 3 && response != 4 && response != 5 && response != 6) {
 			//Integer wasn't correct
-			if (response != 1 && response != 2 && response != 3 && response != 4) {
+			if (response != 1 && response != 2 && response != 3 && response != 4 && response != 5 && response != 6) {
 				System.out.println("Incorrect Input. Please try again.");
 			}
 			while(!input.hasNextInt())
@@ -56,17 +58,19 @@ public class testdriver2 {
 				displayMenu2(response);
 				break;
 			case 2:
-				GeneralOperations.signUpUser(con.stmt);
+				displayMenu2(response);
 				break;
-			case 3: 
+			case 3:
+				displayMenu2(response);
+				break;
+			case 4: 
 				GeneralOperations.signUpDriver(con.stmt);
 				break;
-			case 4:
-				System.out.println("Goodbye!");
+			case 5:
+				GeneralOperations.signUpUser(con.stmt);
 				return;
-			default: 
-				System.out.println("Invalid Input");
-				System.out.println("Please Enter Response");
+			case 6:
+				System.out.println("Goodbye!");
 				return;
 			}
 	}
@@ -76,10 +80,22 @@ public class testdriver2 {
 		
 		/* FOLLOWING THOSE METHOD CALLS, THEN YOU NEED TO DETERMINE WHAT TYPE OF USER THEY ARE
 		 * BASED ON WHAT IS RETURNED FROM THOSE METHODS */
+		//Rider: 1, Driver: 2 Admin: 3
+		String username = "";
+		if (response == 1)
+		{
+			username = GeneralOperations.login(con.stmt, 1);
+		}
+		else if(response == 2)
+		{
+			username = GeneralOperations.login(con.stmt, 2);
+		}
+		else {
+			username = GeneralOperations.login(con.stmt, 3);
+		}
 		
 		/* THEN DISPLAY THE MENU RELATED TO WHO THEY ARE AS A USER... */
 		Scanner input = new Scanner(System.in);
-		GeneralOperations.login(con.stmt);
 
 		//Check what the type of person is based on login information using SQL Query
 		
