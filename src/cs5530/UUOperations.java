@@ -17,19 +17,53 @@ public class UUOperations {
 	/**
 	 *  Method to allow the user to reserve a car for a future date
 	 */
-	public static String reserveCar(Statement stmt) {
+	public static String reserveCar(/*TAKES IN THE LOGGED IN USERNAME*/Statement stmt) {
+		
+		int vin;
+		String date;
+		String[] dateSplit;
+		String fromHour;
+		String[] fromHourSplit;
 		
 		Scanner s = new Scanner(System.in);
 		
-		// TODO: Ask the user when they want to reserve the car for
-		// Take input
-		// date =
-		// time =
+		System.out.println("For which day would you like to reserve a car?");
+		System.out.println("Enter the date in the format YYYY-MM-DD");
+		date = s.nextLine();
+		dateSplit = date.split("-");
+		while(dateSplit.length != 3 || 
+				(dateSplit[0].length() != 4 || dateSplit[1].length() != 2 || dateSplit[2].length() != 2)) {
+			
+			System.out.println("Invalid input. Please follow the format from above.");
+			System.out.println("Enter new date: ");
+			date = s.nextLine();
+			dateSplit = date.split("-");
+		}
+		System.out.println("\n");
 		
-		// TODO: Figure out exactly what info is needed for reserving a car
+		System.out.println("What time would you like to be picked up?");
+		System.out.println("Enter time in the format HH:MM in MILITARY time.");
+		fromHour = s.nextLine();
+		fromHourSplit = fromHour.split(":");
+		while(fromHourSplit.length != 2 || 
+				(fromHourSplit[0].length() != 2 || fromHourSplit[1].length() != 2)) {
+			
+			System.out.println("Invalid input. Please enter the time again.");
+		    fromHour = s.nextLine();
+		    fromHourSplit = fromHour.split(":");
+		}
+		System.out.println("\n");
+		
+		System.out.println("What is the vin number of the car you would like to be picked up in?");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
+		vin = s.nextInt();
+		System.out.println("\n");
 		
 		s.close();
 		
+		// TODO: Build sql query
 		String sql = "";
 		
 		// Output of the query to the db
@@ -259,11 +293,16 @@ public class UUOperations {
 	 */
 	public static String getUsefulFeedbacks(Statement stmt) {
 		
-		// TODO: Instantiate variables needed for input
+		int vin;
 		
 		Scanner s = new Scanner(System.in);
 		
-		// TODO: Take input
+		System.out.println("What was the vin number of the car?");
+		while(!s.hasNextInt()) {
+		    s.next();
+		}
+		vin = s.nextInt();
+		System.out.println("\n");
 		
 		s.close();
 		

@@ -612,7 +612,7 @@ public class GeneralOperations {
 	}
 	
 	/**
-	 *  Method to allow the user to mark another user as trusted or not trusted
+	 *  Method to determine the degree of separation between two users
 	 */
 	public static String getDegreeOfSeparation(Statement stmt) {
 		
@@ -630,8 +630,6 @@ public class GeneralOperations {
 		System.out.println("What is the second username?");
 		user2 = s.nextLine();
 		System.out.println("\n");
-		
-		// TODO: Figure out how to determine how many degrees of separation there are between the two before sql query
 		
 		s.close();
 		
